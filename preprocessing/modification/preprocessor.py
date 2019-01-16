@@ -7,7 +7,7 @@ import cv2
 import numpy as np
 
 # 1. Load the image
-img = cv2.imread('test_pic2.png', cv2.IMREAD_GRAYSCALE)
+img = cv2.imread('test2_input.png', cv2.IMREAD_GRAYSCALE)
 
 # 2. Crop down the middle
 img_width, img_height = img.shape[1], img.shape[0]
@@ -24,6 +24,9 @@ cv2.imshow("left", left_out)
 
 cv2.namedWindow('right',cv2.WINDOW_NORMAL)
 cv2.imshow("right", right_out)
+
+cv2.imwrite('test2_out_left.png', left_out)
+cv2.imwrite('test2_out_right.png', right_out)
 
 cv2.waitKey(0)
 cv2.destroyAllWindows()
