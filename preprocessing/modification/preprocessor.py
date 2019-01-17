@@ -15,7 +15,7 @@ left_tabla_img = img[0:img_height, 0: int(img_width / 2)]
 right_tabla_img = img[0:img_height, int(img_width / 2):img_width]
 
 # 3. Edge detection to isolate the hand
-left_out = cv2.Canny(left_tabla_img,50,200)
+left_out = cv2.Canny(left_tabla_img,0,200)
 right_out = cv2.Canny(right_tabla_img,50,200)
 
 # Optional: display the final processed imgs 

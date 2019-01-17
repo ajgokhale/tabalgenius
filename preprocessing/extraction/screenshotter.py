@@ -13,11 +13,27 @@ def screenshotter(timestamps, burst_size=1, output_filepath='./'):
 	cap = cv2.VideoCapture(VIDEO_FILE)
 	
 	# get frame and snap img
-	for index, frame in enumerate(frames):
+	for index in range(len(frames)):
+		frame = frames[index]
 		print(frame)
 		cap.set(1, frame)
 		_, img = cap.read()
 		cv2.imwrite(output_filepath + str(index) + '.png', img)
+
+		# burst
+		if index == 0:
+			for i in range(burst):
+				cap.set(1, frame + i)
+				_, img = cap.read()
+				cv2.imwrite(output_filepath + str(index) + "_" + str(i) + '.png', img)
+
+		else:
+			# burst by saving previous 5 as well
+			for i in range(burst):
+				cap.set(1, frame - i)
+				_, img = cap.read()
+				cv2.imwrite(output_filepath + str(index) + "_" + str(i) + '.png', img)
+
  
  ### FOR TESTING ###
 
